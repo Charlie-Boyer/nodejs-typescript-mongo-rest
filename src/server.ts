@@ -10,10 +10,14 @@ const router = express();
 const httpServer = http.createServer(router);
 
 /** Connect database */
-// mongoose
-//   .connect(config.mongo.url, config.mongo.options)
-//   .then(() => console.log('connected'))
-//   .catch((error) => console.log(`an error occured ${error}`));
+mongoose
+  .connect(config.mongo.url, config.mongo.options)
+  .then(() => {
+    console.log('Mongo Connected');
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 /** Routes */
 router.use('/blog', userRoutes);
